@@ -46,12 +46,13 @@ metadata:
   namespace: dev
 spec:
   rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: will-playground
-            port:
-              number: 8888
+   - host: #default
+     http:
+       paths:
+       - path: /
+         pathType: Prefix
+         backend:
+           service:
+             name: will-playground
+             port:
+               number: 8888
