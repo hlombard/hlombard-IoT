@@ -11,7 +11,7 @@ metadata:
   name: will-playground
   namespace: dev
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - port: 8888
     targetPort: 8888
@@ -38,21 +38,3 @@ spec:
         image: wil42/playground:v2
         ports:
         - containerPort: 8888
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: will-playground-ingress
-  namespace: dev
-spec:
-  rules:
-   - host: #default
-     http:
-       paths:
-       - path: /
-         pathType: Prefix
-         backend:
-           service:
-             name: will-playground
-             port:
-               number: 8888
